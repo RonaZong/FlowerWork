@@ -199,7 +199,7 @@ export default function TaskManagementDashboard() {
                     </div>
                   </div>
 
-                  <div className="flex gap-1 pl-5 pt-1 sm:pt-0 items-center">
+                  <div className="flex gap-1 pl-5 pt-1 sm:pt-0 items-center flex-wrap">
                     {Array.from({ length: 6 }).map((_, index) => (
                       <div
                         key={index}
@@ -306,7 +306,7 @@ export default function TaskManagementDashboard() {
               </div>
 
               {/* Task containers section */}
-              <div className="flex py-5 gap-4 flex-wrap">
+              {/* <div className="flex py-5 gap-4 flex-wrap">
                 {containerNames.map((containerName) => (
                   <div key={containerName} id={containerName}>
                     {isListActionsCardVisible &&
@@ -339,7 +339,7 @@ export default function TaskManagementDashboard() {
                     />
                   </div>
                 ))}
-              </div>
+              </div> */}
 
               {/* <AddAssignees /> */}
             </div>
