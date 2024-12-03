@@ -341,7 +341,7 @@ export default function TaskManagementDashboard() {
                 ))}
               </div> */}
 
-              {/* <AddAssignees /> */}
+              <AddAssignees />
             </div>
           </div>
         </div>

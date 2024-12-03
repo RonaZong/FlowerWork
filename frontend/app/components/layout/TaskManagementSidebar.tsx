@@ -115,11 +115,9 @@ const TaskManagementSidebar: React.FC<SidebarProps> = ({
             <div className="flex justify-between pb-1  px-2">
               <p className=" text-xl font-semibold">Projects </p>
 
-              <Image
-                src={downArrow}
-                alt="down arrow icon"
-                style={{ width: "auto", height: "auto" }}
-              />
+              <div>
+                <Image src={downArrow} alt="down arrow icon" />
+              </div>
             </div>
 
             <hr />
