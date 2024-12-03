@@ -40,6 +40,7 @@ import listIcon from "../public/listIcon.svg";
 import boardIcon from "../public/boardIcon.svg";
 import calendarIcon from "../public/calendarIcon.svg";
 import moreViewsIcon from "../public/moreViewsIcon.svg";
+import grayBellIcon from "../public/grayBellIcon.svg";
 
 const containerNames = ["todo", "inProgress", "completed"];
 
@@ -227,52 +228,38 @@ export default function TaskManagementDashboard() {
                     ))}
 
                     <div className="relative pl-2 sm:pl-5">
-                      <Image src={bellIcon} alt="bell icon" />
-                      <div className="absolute left-[20px] sm:left-[30px] top-[1px] w-[9px] h-[9px] rounded-full bg-green-400 border border-black"></div>
+                      <Image src={grayBellIcon} alt="bell icon" />
                     </div>
-                  </div>
-                </div>
 
-                {/* Project settings and user icons */}
-                <div className="flex sm:px-4 items-center flex-wrap w-full sm:w-auto">
-                  <div className="flex items-center px-4 pl-8">
-                    <Image
-                      src={lock}
-                      alt="lock icon"
-                      style={{ width: "auto", height: "auto" }}
-                    />
-                    <p className="text-black ml-2 text-sm md:text-base">
-                      Private
-                    </p>
-                  </div>
+                    {/* Assignees icons */}
+                    <div className="flex items-center h-[30px] space-x-[-12px] ml-10 relative mt-2 sm:mt-0">
+                      <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
+                        <span className="text-white font-bold text-sm">
+                          BIO
+                        </span>
+                      </div>
 
-                  <button className="borde rounded-[40px] bg-[#B7B1AA] w-44 h-[35px] mt-2 sm:mt-0">
-                    <div className="flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-full bg-blue-400 flex items-center justify-center">
+                        <span className="text-white font-bold text-sm">OM</span>
+                      </div>
+
+                      <div className="w-8 h-8 rounded-full bg-yellow-400 flex items-center justify-center">
+                        <span className="text-white font-bold text-sm">MP</span>
+                      </div>
+
+                      <div className="absolute -right-[1px] top-[25px] w-[8px] h-[8px] rounded-full bg-green-400 border border-black"></div>
+                    </div>
+
+                    <div className="flex items-center px-4 pl-20">
                       <Image
-                        src={projects}
-                        alt="projects button icon"
+                        src={lock}
+                        alt="lock icon"
                         style={{ width: "auto", height: "auto" }}
                       />
-                      <p className=" ml-2 font-semibold text-sm md:text-base">
-                        All My Projects
+                      <p className="text-black ml-2 text-sm md:text-base">
+                        Logged
                       </p>
                     </div>
-                  </button>
-
-                  <div className="flex items-center h-[30px] space-x-[-20px] ml-10 relative mt-2 sm:mt-0">
-                    <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
-                      <span className="text-white font-bold text-sm">BIO</span>
-                    </div>
-
-                    <div className="w-8 h-8 rounded-full bg-gray-400 flex items-center justify-center">
-                      <span className="text-white font-bold text-sm">OM</span>
-                    </div>
-
-                    <div className="w-8 h-8 rounded-full bg-yellow-400 flex items-center justify-center">
-                      <span className="text-white font-bold text-sm">MP</span>
-                    </div>
-
-                    <div className="absolute -right-[1px] top-[25px] w-[8px] h-[8px] rounded-full bg-green-400 border border-black"></div>
                   </div>
                 </div>
               </div>
@@ -319,7 +306,7 @@ export default function TaskManagementDashboard() {
               </div>
 
               {/* Task containers section */}
-              <div className="flex py-5 gap-4 flex-wrap">
+              {/* <div className="flex py-5 gap-4 flex-wrap">
                 {containerNames.map((containerName) => (
                   <div key={containerName} id={containerName}>
                     {isListActionsCardVisible &&
@@ -352,9 +339,9 @@ export default function TaskManagementDashboard() {
                     />
                   </div>
                 ))}
-              </div>
+              </div> */}
 
-              {/* <AddAssignees /> */}
+              <AddAssignees />
             </div>
           </div>
         </div>

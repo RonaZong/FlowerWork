@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import logoIcon from "@/app/public/logo.svg";
-import downArrowIcon from "@/app/public/down-arrow.svg";
-import connectIcon from "@/app/public/connectIcon.svg";
+import logoIcon from "@/app/public/LOGO.svg";
 import userIconPlaceholder from "@/app/public/userIconPlaceholder.svg";
+import activeIcon from "@/app/public/activeIcon.svg";
+import activeNotificationIcon from "@/app/public/activeNotification.svg";
+import userIcon from "@/app/public/user-icons/userIcon3.svg";
 
 const TaskManagementNavbar = () => {
   return (
@@ -23,34 +24,17 @@ const TaskManagementNavbar = () => {
               priority
             />
           </div>
-
-          <div className="text-white flex gap-6">
-            <button className="flex items-center gap-2 text-lg font-bold">
-              Create
-              <Image src={downArrowIcon} alt="down arrow icon" />
-            </button>
-
-            <button className="flex items-center gap-2 text-lg font-bold">
-              Manage
-              <Image src={downArrowIcon} alt="down arrow icon" />
-            </button>
-
-            <button className="flex items-center gap-2 text-lg font-bold">
-              Explore
-              <Image src={downArrowIcon} alt="down arrow icon" />
-            </button>
-          </div>
         </div>
 
         {/* Right side */}
         <div className="flex gap-6 px-2 min-w-[80px] mt-4 sm:mt-0 items-center">
-          <Image src={connectIcon} alt="connect icon" />
+          <Image src={activeNotificationIcon} alt="active notification icon" />
 
-          <button className="text-xl text-white font-bold ">Sign up</button>
+          <Image src={activeIcon} alt="active icon" />
 
           <Image
-            src={userIconPlaceholder}
-            alt="user placeholder icon"
+            src={userIcon}
+            alt="user icon"
             className="w-10 h-10 sm:h-auto sm:w-auto"
           />
         </div>
