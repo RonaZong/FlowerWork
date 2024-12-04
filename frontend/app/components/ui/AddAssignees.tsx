@@ -49,8 +49,17 @@ export default function AddAssignees() {
   const [isSelectedAssigneeVisible, setIsSelectedAssigneeVisible] =
     useState<boolean>(false);
 
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const filteredAssignees = recentlyUsed.filter((assignee) =>
+    assignee.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <div className="flex flex-col bg-gray-50 min-w-[280px] max-w-[360px] sm:w-[360px] min-h-[526px] rounded-[23px] gap-3 shadow-left-heavy px-6 py-6 mb-3 relative">
+    <div
+      className="flex flex-col bg-gray-50 min-w-[280px] max-w-[360px] sm:w-[360px] min-h-[526px]
+     rounded-[23px] gap-3 shadow-left-heavy px-6 py-6 mb-3 relative "
+    >
       <div className="flex justify-center items-center ">
         <h1 className="mx-auto text-2xl font-bold">Add assignees</h1>
         <Image src={xIcon} alt="x icon" className="cursor-pointer" />
@@ -62,6 +71,8 @@ export default function AddAssignees() {
           placeholder="Search for assig..."
           className="border-2 rounded-lg border-black pl-10 h-[40px] w-full sm:w-[328px]"
           type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
         <Image
           src={searchIcon}
@@ -76,41 +87,47 @@ export default function AddAssignees() {
         {/* Leave this empty as no assignees are added here */}
       </div>
 
+      <p className="font-semibold text-[#C5C1BB]">Recently used</p>
+
       <hr />
 
       {/* Recently used assignees */}
       <div className="flex flex-col gap-1 relative">
-        {recentlyUsed.map((user) => (
-          <div
-            key={user.id}
-            className="flex items-center justify-between border p-1 px-2 rounded-full cursor-pointer hover:bg-[#E2E2E2] hover:border-[#B055CC]"
-          >
-            <div className="flex items-center">
-              {user.icon ? (
-                <Image src={user.icon} alt="user icon" />
-              ) : (
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#DEDBD8] flex items-center justify-center">
-                  <span className="text-[#181615] font-bold text-sm">SM</span>
-                </div>
-              )}
-              <p className="text-lg font-semibold pl-3 text-[#181615]">
-                {user.name}
-              </p>
-            </div>
+        {filteredAssignees.length > 0 ? (
+          filteredAssignees.map((user) => (
+            <div
+              key={user.id}
+              className="flex items-center justify-between border p-1 px-2 rounded-full cursor-pointer hover:bg-[#E2E2E2] hover:border-[#B055CC]"
+            >
+              <div className="flex items-center">
+                {user.icon ? (
+                  <Image src={user.icon} alt="user icon" />
+                ) : (
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#DEDBD8] flex items-center justify-center">
+                    <span className="text-[#181615] font-bold text-sm">SM</span>
+                  </div>
+                )}
+                <p className="text-lg font-semibold pl-3 text-[#181615]">
+                  {user.name}
+                </p>
+              </div>
 
-            <Image
-              src={assigneeIcon}
-              alt="assignee icon"
-              className="mr-2"
-              onClick={() => {
-                setSelectedAssignee(user);
-                setIsSelectedAssigneeVisible(true);
-              }}
-              onMouseEnter={() => {}}
-              onMouseLeave={() => {}}
-            />
-          </div>
-        ))}
+              <Image
+                src={assigneeIcon}
+                alt="assignee icon"
+                className="mr-2"
+                onClick={() => {
+                  setSelectedAssignee(user);
+                  setIsSelectedAssigneeVisible(true);
+                }}
+                onMouseEnter={() => {}}
+                onMouseLeave={() => {}}
+              />
+            </div>
+          ))
+        ) : (
+          <p className="text-gray-500">No assignees found</p>
+        )}
 
         {selectedAssignee && isSelectedAssigneeVisible && (
           <div className="absolute sm:left-full -left-10 top-0 ml-4">
@@ -132,7 +149,7 @@ export default function AddAssignees() {
       {/* Invite button */}
       <button className="flex items-center border border-black rounded-lg py-1 px-4 mt-1 gap-3 hover:bg-[#E2E2E2]">
         <Image src={inviteUserIcon} alt="invite user icon" />
-        <p className="text-lg font-semibold">Invite new team members</p>
+        <p className="text-lg font-regular">Invite new team members</p>
       </button>
     </div>
   );
