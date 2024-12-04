@@ -30,6 +30,7 @@ import TaskManagementNavbar from "../components/layout/TaskManagementNavbar";
 import TaskManagementSidebar from "../components/layout/TaskManagementSidebar";
 import ListActionsCard from "../components/ui/ListActionsCard";
 import AddAssignees from "../components/ui/AddAssignees";
+import InviteNewTeamMembers from "../components/ui/InviteNewTeamMembers";
 
 // Icon imports
 import lock from "../public/lock-icon.svg";
@@ -341,7 +342,7 @@ export default function TaskManagementDashboard() {
                 ))}
               </div> */}
 
-              <AddAssignees />
+              <InviteNewTeamMembers />
             </div>
           </div>
         </div>
