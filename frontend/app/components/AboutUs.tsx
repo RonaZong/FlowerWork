@@ -70,18 +70,17 @@ export const ALL_TEAM_MEMBERS = [
 
 const AboutUs = () => {
   const [showAll, setShowAll] = useState(false);
-
   const toggleShowAll = () => {setShowAll(!showAll)};
 
   return (
-    <div className="w-full bg-bgdarkv2 text-white">
+    <div className="w-full bg-bgdarkv1 text-white text-base">
       {/* Header Section */}
       <header className="relative z-30">
         <Navbar className="z-40" />
       </header>
 
       {/* Hero Image Container */}
-      <div className="relative w-full overflow-hidden">
+      <div className="relative overflow-hidden">
         {/* Background Image */}
         <Image
           src={heroimage}
@@ -90,116 +89,121 @@ const AboutUs = () => {
         />
 
         {/* Content Overlay */}
-        <div className="absolute top-1/4 left-10 flex flex-col items-center justify-center text-left text-white leading-relaxed hidden md:block">
-          <div className="mb-4">
+        <div className="absolute top-[20%] left-[10%] flex flex-col items-start">
+          <div className="mb-5">
             <Image 
               src={logo} 
               alt="logo"
-              // className="w-32 md:w-48"
+              className="w-full object-cover"
             />
           </div>
-          <p className="font-semibold text-base md:text-lg">Is the all-in-one platform to stramline workflows, connect with</p>
-          <p className="font-semibold text-base md:text-lg">top talents, foster seamless collaboration, assign tasks</p>
-          <p className="font-semibold text-base md:text-lg">effortlessly, and securely track progress.</p>
+          <div className="font-semibold space-y-4">
+            <p>Is the all-in-one platform to stramline workflows, connect with</p>
+            <p>top talents, foster seamless collaboration, assign tasks</p>
+            <p>effortlessly, and securely track progress.</p>
+          </div>
         </div>
       </div>
 
       {/* Main Content */}
       <main className="w-full flex flex-col items-center">
         {/* Offer Section */}
-        <section className="p-8 flex flex-col md:flex-row items-center justify-center gap-8">
-          <div className="flex-[2] space-y-6">
-            <h2 className="text-3xl font-bold mb-4">
-              What <span className="text-purplev1 font-bold">We Offer Now</span>
+        <section className="flex flex-row items-center justify-center gap-8 mx-20 p-8">
+          <div className="flex-[3]">
+            <h2 className="text-2xl font-bold">
+              What <span className="text-purplev1">We Offer Now</span>
             </h2>
-            <hr className="border-t mb-4"></hr>
-            <div className="flex flex-row pb-2">
-              <p className="flex-[1] font-semibold">Efficient Project Management</p>
-              <p className="flex-[2]">Organize tasks, timelines, and resources - all in one place with FlowerWork’s intuitive dashboard, keeping deadlines and progress on track.</p>
-            </div>
-            <div className="flex flex-row pb-2">
-              <p className="flex-[1] font-semibold">Flexible Talent and Scalability</p>
-              <p className="flex-[2]">Access verified professionals and scale projects seamlessly, whether for solo ventures or multi-team workflows.</p>
-            </div>
-            <div className="flex flex-row pb-2">
-              <p className="flex-[1] font-semibold">Collaborative Workflows</p>
-              <p className="flex-[2]">Streamline communication with real-time updates, file sharing, and feedback tools to stay aligned and productive.</p>
-            </div>
-            <div className="flex flex-row pb-2">
-              <p className="flex-[1] font-semibold">Secure Data and Goal Tracking</p>
-              <p className="flex-[2]">Protect your data while tracking project actions with clear documentation and customizable tools to achieve your goals.</p>
+            <hr className="border-t-2 mt-2 mb-8"></hr>
+            <div className="space-y-4">
+              <div className="flex flex-row pb-2 gap-4">
+                <p className="flex-[1] font-semibold">Efficient Project Management</p>
+                <p className="flex-[2] text-sm">Organize tasks, timelines, and resources - all in one place with FlowerWork’s intuitive dashboard, keeping deadlines and progress on track.</p>
+              </div>
+              <div className="flex flex-row pb-2 gap-4">
+                <p className="flex-[1] font-semibold">Flexible Talent and Scalability</p>
+                <p className="flex-[2] text-sm">Access verified professionals and scale projects seamlessly, whether for solo ventures or multi-team workflows.</p>
+              </div>
+              <div className="flex flex-row pb-2 gap-4">
+                <p className="flex-[1] font-semibold">Collaborative Workflows</p>
+                <p className="flex-[2] text-sm">Streamline communication with real-time updates, file sharing, and feedback tools to stay aligned and productive.</p>
+              </div>
+              <div className="flex flex-row pb-2 gap-4">
+                <p className="flex-[1] font-semibold">Secure Data and Goal Tracking</p>
+                <p className="flex-[2] text-sm">Protect your data while tracking project actions with clear documentation and customizable tools to achieve your goals.</p>
+              </div>
             </div>
           </div>
           {/* Background Image */}
-          <div className="flex-[1.5] relative w-full">
+          <div className="flex-[1.5] md:w-2/3 sm:w-full overflow-hidden">
             <Image
               src={offer}
               alt="sample-image"
-              width={417}
-              height={391}
-              className="w-full h-auto object-cover"
+              className="object-cover object-right"
             />
           </div>
         </section>
 
         {/* Mission Section */}
-        <section className="p-8 flex flex-col md:flex-row items-center justify-center gap-8">
+        <section className="flex flex-row items-center justify-center gap-8 mx-20 p-8">
           {/* Background Image */}
           <div className="flex-[1.5] relative w-full">
             <Image
               src={mission}
               alt="sample-image"
-              width={432}
-              height={391}
               className="w-full object-cover"
             />
           </div>
-          <div  className="flex-[2] space-y-6">
-            <h2 className="text-3xl font-bold mb-4">
+          <div className="flex-[3]">
+            <h2 className="text-2xl font-bold">
               Our <span className="text-purplev1 font-bold">Mission</span>
             </h2>
-            <hr className="border-t my-4"></hr>
-            <div className="flex flex-row pb-2">
-              <p className="flex-[1] font-semibold">Empowering Teams and Individuals</p>
-              <p className="flex-[2]">Drive efficient project management and seamless collaboration, enabling teams and individuals to focus on what truly matters and achieve exceptional results.</p>
+            <hr className="border-t-2 mt-2 mb-8"></hr>
+            <div className="space-y-4">
+              <div className="flex flex-row pb-2 gap-4">
+                <p className="flex-[1] font-semibold">Empowering Teams and Individuals</p>
+                <p className="flex-[2] text-sm">Drive efficient project management and seamless collaboration, enabling teams and individuals to focus on what truly matters and achieve exceptional results.</p>
+              </div>
+              <div className="flex flex-row pb-2 gap-4">
+                <p className="flex-[1] font-semibold">Bridging Talent and Opportunity</p>
+                <p className="flex-[2] text-sm">Bridge the gap between talent and opportunity by curating professional talent pools tailored to meet unique needs and exceed expectations.</p>
+              </div>
+              <div className="flex flex-row pb-2 gap-4">
+                <p className="flex-[1] font-semibold">Scaling Success with Flexibility</p>
+                <p className="flex-[2] text-sm">Deliver adaptable solutions that evolve with you—scaling effortlessly from small tasks to complex workflows, empowering teams of any size to succeed.</p>
+              </div>
+              <div className="flex flex-row pb-2 gap-4">
+                <p className="flex-[1] font-semibold">Increase productivity efficiently</p>
+                <p className="flex-[2] text-sm">Equipped with advanced features to streamline workflows, optimizing resource with seasoned experts, and tailored solutions, businesses drive efficiency and boost productivity.</p>
+              </div>
             </div>
-            <div className="flex flex-row pb-2">
-              <p className="flex-[1] font-semibold">Bridging Talent and Opportunity</p>
-              <p className="flex-[2]">Bridge the gap between talent and opportunity by curating professional talent pools tailored to meet unique needs and exceed expectations.</p>
-            </div>
-            <div className="flex flex-row pb-2">
-              <p className="flex-[1] font-semibold">Scaling Success with Flexibility</p>
-              <p className="flex-[2]">Deliver adaptable solutions that evolve with you—scaling effortlessly from small tasks to complex workflows, empowering teams of any size to succeed.</p>
-            </div>
-            <div className="flex flex-row pb-2">
-              <p className="flex-[1] font-semibold">Increase productivity efficiently</p>
-              <p className="flex-[2]">Equipped with advanced features to streamline workflows, optimizing resource with seasoned experts, and tailored solutions, businesses drive efficiency and boost productivity.</p>
-            </div>
+            
           </div>
         </section>
 
         {/* Flowerwork Section */}
-        <section className="p-8 flex flex-col md:flex-row items-center justify-center gap-8">
-          <div className="flex-[2] space-y-6">
-            <h2 className="text-3xl font-semibold">
+        <section className="flex flex-row items-center justify-center gap-8 mx-20 p-8 ">
+          <div className="flex-[3]">
+            <h2 className="text-2xl font-semibold">
               Upcoming Features on <span className="text-purplev1 font-bold">FlowerWork</span>
             </h2>
-            <hr className="border-t mb-4"></hr>
-            <div className="flex flex-row pb-2">
-              <p className="flex-[1] font-semibold">AI-Driven Task Management</p>
-              <p className="flex-[2]">Elevate your entire project management with our AI tools, automating task creation, priority setting, precise forecasting, real time updates, etc.</p>
-            </div>
-            <div className="flex flex-row pb-2">
-              <p className="flex-[1] font-semibold">Blockchain-Powered Talent Verification</p>
-              <p className="flex-[2]">Build trust and transparency with blockchain-secured profiles and verified credentials for talent connections you can rely on.</p>
-            </div>
-            <div className="flex flex-row pb-2">
-              <p className="flex-[1] font-semibold">Automated Talent Matching</p>
-              <p className="flex-[2]">Let AI intelligently match your projects with the best-fit professionals based on skills, availability, and performance history, while automating your interview process.</p>
-            </div>
-            <div className="flex flex-row pb-2">
-              <p className="flex-[1] font-semibold">Smart Contract Onboarding</p>
-              <p className="flex-[2]">Simplify onboarding and collaboration with blockchain-powered smart contracts for secure and efficient agreements.</p>
+            <hr className="border-t-2 mt-2 mb-8"></hr>
+            <div className="space-y-4">
+              <div className="flex flex-row pb-2 gap-4">
+                <p className="flex-[1] font-semibold">AI-Driven Task Management</p>
+                <p className="flex-[2] text-sm">Elevate your entire project management with our AI tools, automating task creation, priority setting, precise forecasting, real time updates, etc.</p>
+              </div>
+              <div className="flex flex-row pb-2 gap-4">
+                <p className="flex-[1] font-semibold">Blockchain-Powered Talent Verification</p>
+                <p className="flex-[2] text-sm">Build trust and transparency with blockchain-secured profiles and verified credentials for talent connections you can rely on.</p>
+              </div>
+              <div className="flex flex-row pb-2 gap-4">
+                <p className="flex-[1] font-semibold">Automated Talent Matching</p>
+                <p className="flex-[2] text-sm">Let AI intelligently match your projects with the best-fit professionals based on skills, availability, and performance history, while automating your interview process.</p>
+              </div>
+              <div className="flex flex-row pb-2 gap-4">
+                <p className="flex-[1] font-semibold">Smart Contract Onboarding</p>
+                <p className="flex-[2] text-sm">Simplify onboarding and collaboration with blockchain-powered smart contracts for secure and efficient agreements.</p>
+              </div>
             </div>
           </div>
           {/* Background Image */}
@@ -207,8 +211,6 @@ const AboutUs = () => {
             <Image
               src={flowerwork}
               alt="sample-image"
-              width={434}
-              height={434}
               className="w-full object-cover"
             />
           </div>
@@ -252,9 +254,7 @@ const AboutUs = () => {
         <Button className="bg-purplev1 hover:bg-purplev-700 text-white font-bold px-6 py-3">
           Collaborate with us
         </Button>
-      </div>
-
-      
+      </div>      
 
       {/* Footer */}
       <footer>
