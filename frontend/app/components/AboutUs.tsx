@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-import { Footer, Navbar } from "../components";
+import { Footer, Navbar } from "./layout";
 import { Button } from "@/components/ui/button";
 import TeamProfile from "./TeamProfile";
 
@@ -25,6 +25,11 @@ import stefan from "../public/stefan.png"
 
 export const TEAM_MEMBERS = [
   {
+    name: "Francisco Padilla",
+    role: "CEO",
+    imageSrc: francisco,
+  },
+  {
     name: "Rukaiya Mansoor",
     role: "Project Manager",
     imageSrc: rukaiya,
@@ -38,6 +43,11 @@ export const TEAM_MEMBERS = [
     name: "Hrigved Nair",
     role: "Marketing and Growth",
     imageSrc: hrigved,
+  },
+  {
+    name: "Stefan Andrei",
+    role: "Full stack Developer",
+    imageSrc: stefan,
   },
 ]
 
@@ -106,7 +116,7 @@ const AboutUs = () => {
       </header>
 
       {/* Hero Image Container */}
-      <div className="relative overflow-hidden">
+      <div className="w-full relative overflow-hidden">
         {/* Background Image */}
         <Image
           src={heroimage}
@@ -115,16 +125,15 @@ const AboutUs = () => {
         />
 
         {/* Content Overlay */}
-        <div className="absolute top-20 left-0 flex flex-col items-start gap-10 mx-52 py-10">
-          <div className="w-[409px] h-[54px]">
+        <div className="w-full h-full absolute top-10 md:top-15 lg:top-20 left-0 flex flex-col items-start gap-6 mx-20 py-6 md:gap-8 md:mx-30 md:py-8 lg:gap-10 lg:mx-52 lg:py-10">
+          <div className="w-[200px] h-[30px] sm:w-[200px] sm:h-[30px] md:w-[300px] md:h-[45px] lg:w-[409px] lg:h-[54px]">
             <Image 
-              src={logo} 
+              src={logo}
               alt="logo"
-              // height={90}
               className="object-cover"
             />
           </div>
-          <div className="font-bold space-y-8 text-[32px] mt-5">
+          <div className="leading-relaxed font-bold sm:space-y-4 sm:text-base md:space-y-6 md:text-xl lg:space-y-8 lg:text-[32px] mt-5">
             <p>Is the all-in-one platform to streamline workflows, connect with</p>
             <p>top talents, foster seamless collaboration, assign tasks</p>
             <p>effortlessly, and securely track progress.</p>
@@ -133,30 +142,30 @@ const AboutUs = () => {
       </div>
 
       {/* Main Content */}
-      <main className="w-full flex flex-col items-center">
+      <main className="flex flex-col items-center gap-4">
         {/* Offer Section */}
-        <section className="flex flex-row items-center justify-center gap-10 mx-52 mt-10 mb-28">
+        <section className="flex flex-col md:flex-row items-center justify-center gap-6 mx-20 py-6 md:gap-8 md:mx-30 md:py-8 lg:gap-10 lg:mx-52 lg:mt-10 lg:mb-28">
           <div className="flex-[3]">
-            <h2 className="text-[48px] font-bold">
+            <h1 className="font-bold text-xl sm:text-xl md:text-[30px] lg:text-[48px]">
               What <span className="text-purplev1">We Offer Now</span>
-            </h2>
-            <hr className="border-t-8 mt-8 mb-14"></hr>
+            </h1>
+            <hr className="sm:border-t-4 md:border-t-6 lg:border-t-8 mt-8 mb-14"></hr>
             <div className="space-y-8">
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-[24px]">Efficient Project Management</p>
-                <p className="flex-[2] font-semibold text-[20px]">Organize tasks, timelines, and resources - all in one place with FlowerWork’s intuitive dashboard, keeping deadlines and progress on track.</p>
+                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Efficient Project Management</p>
+                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Organize tasks, timelines, and resources - all in one place with FlowerWork’s intuitive dashboard, keeping deadlines and progress on track.</p>
               </div>
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-[24px]">Flexible Talent and Scalability</p>
-                <p className="flex-[2] font-semibold text-[20px]">Access verified professionals and scale projects seamlessly, whether for solo ventures or multi-team workflows.</p>
+                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Flexible Talent and Scalability</p>
+                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Access verified professionals and scale projects seamlessly, whether for solo ventures or multi-team workflows.</p>
               </div>
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-[24px]">Collaborative Workflows</p>
-                <p className="flex-[2] font-semibold text-[20px]">Streamline communication with real-time updates, file sharing, and feedback tools to stay aligned and productive.</p>
+                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Collaborative Workflows</p>
+                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Streamline communication with real-time updates, file sharing, and feedback tools to stay aligned and productive.</p>
               </div>
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-[24px]">Secure Data and Goal Tracking</p>
-                <p className="flex-[2] font-semibold text-[20px]">Protect your data while tracking project actions with clear documentation and customizable tools to achieve your goals.</p>
+                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Secure Data and Goal Tracking</p>
+                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Protect your data while tracking project actions with clear documentation and customizable tools to achieve your goals.</p>
               </div>
             </div>
           </div>
@@ -171,7 +180,7 @@ const AboutUs = () => {
         </section>
 
         {/* Mission Section */}
-        <section className="flex flex-row items-center justify-center gap-10 mx-52 mt-10 mb-28">
+        <section className="flex flex-col md:flex-row items-center justify-center gap-6 mx-20 py-6 md:gap-8 md:mx-30 md:py-8 gap-10 mx-52 mt-10 mb-28">
           {/* Background Image */}
           <div className="flex-[1.5] w-[432px] h-[391px] overflow-hidden">
             <Image
@@ -181,55 +190,54 @@ const AboutUs = () => {
             />
           </div>
           <div className="flex-[3]">
-            <h2 className="text-[48px] font-bold">
+            <h1 className="font-bold text-xl sm:text-xl md:text-[30px] lg:text-[48px]">
               Our <span className="text-purplev1 font-bold">Mission</span>
-            </h2>
-            <hr className="border-t-8 mt-8 mb-14"></hr>
+            </h1>
+            <hr className="sm:border-t-4 md:border-t-6 lg:border-t-8 mt-8 mb-14"></hr>
             <div className="space-y-8">
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-[24px]">Empowering Teams and Individuals</p>
-                <p className="flex-[2] font-semibold text-[20px]">Drive efficient project management and seamless collaboration, enabling teams and individuals to focus on what truly matters and achieve exceptional results.</p>
+                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Empowering Teams and Individuals</p>
+                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Drive efficient project management and seamless collaboration, enabling teams and individuals to focus on what truly matters and achieve exceptional results.</p>
               </div>
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-[24px]">Bridging Talent and Opportunity</p>
-                <p className="flex-[2] font-semibold text-[20px]">Bridge the gap between talent and opportunity by curating professional talent pools tailored to meet unique needs and exceed expectations.</p>
+                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Bridging Talent and Opportunity</p>
+                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Bridge the gap between talent and opportunity by curating professional talent pools tailored to meet unique needs and exceed expectations.</p>
               </div>
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-[24px]">Scaling Success with Flexibility</p>
-                <p className="flex-[2] font-semibold text-[20px]">Deliver adaptable solutions that evolve with you—scaling effortlessly from small tasks to complex workflows, empowering teams of any size to succeed.</p>
+                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Scaling Success with Flexibility</p>
+                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Deliver adaptable solutions that evolve with you—scaling effortlessly from small tasks to complex workflows, empowering teams of any size to succeed.</p>
               </div>
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-[24px]">Increase productivity efficiently</p>
-                <p className="flex-[2] font-semibold text-[20px]">Equipped with advanced features to streamline workflows, optimizing resource with seasoned experts, and tailored solutions, businesses drive efficiency and boost productivity.</p>
+                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Increase productivity efficiently</p>
+                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Equipped with advanced features to streamline workflows, optimizing resource with seasoned experts, and tailored solutions, businesses drive efficiency and boost productivity.</p>
               </div>
             </div>
-            
           </div>
         </section>
 
         {/* Flowerwork Section */}
-        <section className="flex flex-row items-center justify-center gap-10 mx-52 mt-10 mb-28">
+        <section className="flex flex-col md:flex-row items-center justify-center gap-10 mx-52 mt-10 mb-28">
           <div className="flex-[3]">
-            <h2 className="text-[48px] font-bold">
+            <h1 className="font-bold text-xl sm:text-xl md:text-[30px] lg:text-[48px]">
               Upcoming Features on <span className="text-purplev1 font-bold">FlowerWork</span>
-            </h2>
-            <hr className="border-t-8 mt-8 mb-14"></hr>
+            </h1>
+            <hr className="sm:border-t-4 md:border-t-6 lg:border-t-8 mt-8 mb-14"></hr>
             <div className="space-y-8">
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-[24px]">AI-Driven Task Management</p>
-                <p className="flex-[2] font-semibold text-[20px]">Elevate your entire project management with our AI tools, automating task creation, priority setting, precise forecasting, real time updates, etc.</p>
+                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">AI-Driven Task Management</p>
+                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Elevate your entire project management with our AI tools, automating task creation, priority setting, precise forecasting, real time updates, etc.</p>
               </div>
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-[24px]">Blockchain-Powered Talent Verification</p>
-                <p className="flex-[2] font-semibold text-[20px]">Build trust and transparency with blockchain-secured profiles and verified credentials for talent connections you can rely on.</p>
+                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Blockchain-Powered Talent Verification</p>
+                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Build trust and transparency with blockchain-secured profiles and verified credentials for talent connections you can rely on.</p>
               </div>
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-[24px]">Automated Talent Matching</p>
-                <p className="flex-[2] font-semibold text-[20px]">Let AI intelligently match your projects with the best-fit professionals based on skills, availability, and performance history, while automating your interview process.</p>
+                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Automated Talent Matching</p>
+                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Let AI intelligently match your projects with the best-fit professionals based on skills, availability, and performance history, while automating your interview process.</p>
               </div>
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-[24px]">Smart Contract Onboarding</p>
-                <p className="flex-[2] font-semibold text-[20px]">Simplify onboarding and collaboration with blockchain-powered smart contracts for secure and efficient agreements.</p>
+                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Smart Contract Onboarding</p>
+                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Simplify onboarding and collaboration with blockchain-powered smart contracts for secure and efficient agreements.</p>
               </div>
             </div>
           </div>
@@ -252,7 +260,7 @@ const AboutUs = () => {
         {/* Pictures */}
         <div className="relative w-full flex flex-wrap justify-center gap-8">
           {/* Background Image */}
-          {TEAM_MEMBERS.map((member, index) => (
+          {!showAll && TEAM_MEMBERS.map((member, index) => (
             <TeamProfile
               key={index}
               name={member.name}
