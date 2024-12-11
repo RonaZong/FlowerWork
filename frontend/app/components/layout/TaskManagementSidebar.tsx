@@ -59,7 +59,7 @@ const TaskManagementSidebar: React.FC<SidebarProps> = ({
             <Image
               src={arrowLeft}
               alt="left arrow icon"
-              className="cursor-pointer absolute -right-3 top-12 transform -translate-y-1/2  block"
+              className="cursor-pointer absolute right-0 sm:-right-3 top-12 transform -translate-y-1/2  block"
               onClick={toggleLeftDiv}
               style={{ width: "auto", height: "auto" }}
             />

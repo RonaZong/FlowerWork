@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import SelectedAssignees from "./SelectedAssignees";
+import InviteNewTeamMembers from "./InviteNewTeamMembers";
 
 // Icon imports
 import xIcon from "@/app/public/x-icon.svg";
@@ -50,6 +51,8 @@ export default function AddAssignees() {
     useState<boolean>(false);
 
   const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const [isInviteVisible, setIsInviteVisible] = useState<boolean>(false);
 
   const filteredAssignees = recentlyUsed.filter((assignee) =>
     assignee.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -120,8 +123,6 @@ export default function AddAssignees() {
                   setSelectedAssignee(user);
                   setIsSelectedAssigneeVisible(true);
                 }}
-                onMouseEnter={() => {}}
-                onMouseLeave={() => {}}
               />
             </div>
           ))
@@ -130,10 +131,19 @@ export default function AddAssignees() {
         )}
 
         {selectedAssignee && isSelectedAssigneeVisible && (
-          <div className="absolute sm:left-full -left-10 top-0 ml-4">
+          <div className="absolute sm:left-full -left-10 -top-14 ml-4">
             <SelectedAssignees
               assignee={selectedAssignee}
               onClose={() => setIsSelectedAssigneeVisible(false)}
+            />
+          </div>
+        )}
+
+        {/* Conditionally render InviteNewTeamMembers */}
+        {isInviteVisible && (
+          <div className="absolute border-2 shadow-2xl rounded-[24px] -left-10 sm:-left-24 -top-28 md:-left-60 sm:-top-14 ml-4">
+            <InviteNewTeamMembers
+              handleCloseInvite={() => setIsInviteVisible(false)}
             />
           </div>
         )}
@@ -147,7 +157,10 @@ export default function AddAssignees() {
       </div>
 
       {/* Invite button */}
-      <button className="flex items-center border border-black rounded-lg py-1 px-4 mt-1 gap-3 hover:bg-[#E2E2E2]">
+      <button
+        className="flex items-center border border-black rounded-lg py-1 px-4 mt-1 gap-3 hover:bg-[#E2E2E2]"
+        onClick={() => setIsInviteVisible(!isInviteVisible)} // Toggle visibility
+      >
         <Image src={inviteUserIcon} alt="invite user icon" />
         <p className="text-lg font-regular">Invite new team members</p>
       </button>
