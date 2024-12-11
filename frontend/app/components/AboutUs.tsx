@@ -7,8 +7,9 @@ import { Footer, Navbar } from "./layout";
 import { Button } from "@/components/ui/button";
 import TeamProfile from "./TeamProfile";
 
+import background from "../public/aboutpage_text.png";
 import heroimage from "../public/aboutpagehero.png";
-import logo from "../public/text_logo.png";
+import logo from "../public/LOGO.png";
 import offer from "../public/offer.jpeg"
 import mission from "../public/mission.png"
 import flowerwork from "../public/flowerwork.webp"
@@ -116,137 +117,148 @@ const AboutUs = () => {
       </header>
 
       {/* Hero Image Container */}
-      <div className="w-full relative overflow-hidden">
-        {/* Background Image */}
-        <Image
-          src={heroimage}
-          alt="sample-image"
-          className="w-full object-cover"
-        />
-
-        {/* Content Overlay */}
-        <div className="w-full h-full absolute top-10 md:top-15 lg:top-20 left-0 flex flex-col items-start gap-6 mx-20 py-6 md:gap-8 md:mx-30 md:py-8 lg:gap-10 lg:mx-52 lg:py-10">
-          <div className="w-[200px] h-[30px] sm:w-[200px] sm:h-[30px] md:w-[300px] md:h-[45px] lg:w-[409px] lg:h-[54px]">
+      <div className="w-full relative overflow-hidden max-h-screen">
+        {/* LG and MD Screen */}
+        <div className="hidden md:block">
+          {/* Background Image */}
+          <Image
+            src={background}
+            alt="sample-image"
+            className="w-full h-auto object-cover"
+          />
+        </div>
+        
+        {/* Mobile Screen */}
+        <div className="block md:hidden bg-cover bg-center relative w-full h-auto">
+          {/* Background Image */}
+          <Image
+            src={heroimage}
+            alt="sample-image"
+            className="w-full h-auto object-cover"
+          />
+          {/* Content Overlay */}
+          <div className="flex flex-col items-start absolute inset-0 bg-black bg-opacity-50 z-0 gap-4 mx-10 px-4 py-4 space-y-4">
             <Image 
               src={logo}
               alt="logo"
-              className="object-cover"
+              width={200}
+              height={200}
+              className="w-auto"
             />
-          </div>
-          <div className="leading-relaxed font-bold sm:space-y-4 sm:text-base md:space-y-6 md:text-xl lg:space-y-8 lg:text-[32px] mt-5">
-            <p>Is the all-in-one platform to streamline workflows, connect with</p>
-            <p>top talents, foster seamless collaboration, assign tasks</p>
-            <p>effortlessly, and securely track progress.</p>
+            <div className="font-bold">
+              <p>Is the all-in-one platform to streamline workflows, connect with top talents, foster seamless collaboration, assign tasks effortlessly, and securely track progress.</p>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <main className="flex flex-col items-center gap-4">
+      <main className="flex flex-col items-center max-w-[1440px] mx-auto px-6 h-auto space-y-8">
         {/* Offer Section */}
-        <section className="flex flex-col md:flex-row items-center justify-center gap-6 mx-20 py-6 md:gap-8 md:mx-30 md:py-8 lg:gap-10 lg:mx-52 lg:mt-10 lg:mb-28">
-          <div className="flex-[3]">
-            <h1 className="font-bold text-xl sm:text-xl md:text-[30px] lg:text-[48px]">
+        <section className="flex flex-col lg:flex-row items-center justify-center gap-6 mx-8 py-6">
+          <div className="flex-1">
+            <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl leading-relaxed">
               What <span className="text-purplev1">We Offer Now</span>
             </h1>
-            <hr className="sm:border-t-4 md:border-t-6 lg:border-t-8 mt-8 mb-14"></hr>
-            <div className="space-y-8">
+            <hr className="border-t-4 md:border-t-6 mt-4 mb-6"></hr>
+            <div className="flex flex-col space-y-6">
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Efficient Project Management</p>
-                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Organize tasks, timelines, and resources - all in one place with FlowerWork’s intuitive dashboard, keeping deadlines and progress on track.</p>
+                <p className="flex-[1] font-bold text-lg md:text-xl lg:text-2xl">Efficient Project Management</p>
+                <p className="flex-[2] font-semibold text-base md:text-lg lg:text-xl">Organize tasks, timelines, and resources - all in one place with FlowerWork’s intuitive dashboard, keeping deadlines and progress on track.</p>
               </div>
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Flexible Talent and Scalability</p>
-                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Access verified professionals and scale projects seamlessly, whether for solo ventures or multi-team workflows.</p>
+                <p className="flex-[1] font-bold text-lg md:text-xl lg:text-2xl">Flexible Talent and Scalability</p>
+                <p className="flex-[2] font-semibold text-base md:text-lg lg:text-xl">Access verified professionals and scale projects seamlessly, whether for solo ventures or multi-team workflows.</p>
               </div>
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Collaborative Workflows</p>
-                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Streamline communication with real-time updates, file sharing, and feedback tools to stay aligned and productive.</p>
+                <p className="flex-[1] font-bold text-lg md:text-xl lg:text-2xl">Collaborative Workflows</p>
+                <p className="flex-[2] font-semibold text-base md:text-lg lg:text-xl">Streamline communication with real-time updates, file sharing, and feedback tools to stay aligned and productive.</p>
               </div>
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Secure Data and Goal Tracking</p>
-                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Protect your data while tracking project actions with clear documentation and customizable tools to achieve your goals.</p>
+                <p className="flex-[1] font-bold text-lg md:text-xl lg:text-2xl">Secure Data and Goal Tracking</p>
+                <p className="flex-[2] font-semibold text-base md:text-lg lg:text-xl">Protect your data while tracking project actions with clear documentation and customizable tools to achieve your goals.</p>
               </div>
             </div>
           </div>
           {/* Background Image */}
-          <div className="flex-[1.5] w-[417px] h-[391px] overflow-hidden">
+          <div className="mx-auto">
             <Image
               src={offer}
               alt="sample-image"
-              className="w-full h-full object-cover"
+              className="w-[417px] h-[391px] object-cover"
             />
           </div>
         </section>
 
         {/* Mission Section */}
-        <section className="flex flex-col md:flex-row items-center justify-center gap-6 mx-20 py-6 md:gap-8 md:mx-30 md:py-8 gap-10 mx-52 mt-10 mb-28">
+        <section className="flex flex-col lg:flex-row items-center justify-center gap-6 mx-8 py-6">
           {/* Background Image */}
-          <div className="flex-[1.5] w-[432px] h-[391px] overflow-hidden">
+          <div className="mx-auto">
             <Image
               src={mission}
               alt="sample-image"
-              className="w-full h-full object-cover"
+              className="w-[432px] h-[391px] object-cover"
             />
           </div>
-          <div className="flex-[3]">
-            <h1 className="font-bold text-xl sm:text-xl md:text-[30px] lg:text-[48px]">
+          <div className="flex-1">
+            <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl leading-relaxed">
               Our <span className="text-purplev1 font-bold">Mission</span>
             </h1>
-            <hr className="sm:border-t-4 md:border-t-6 lg:border-t-8 mt-8 mb-14"></hr>
-            <div className="space-y-8">
+            <hr className="border-t-4 md:border-t-6 mt-4 mb-6"></hr>
+            <div className="flex flex-col space-y-6">
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Empowering Teams and Individuals</p>
-                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Drive efficient project management and seamless collaboration, enabling teams and individuals to focus on what truly matters and achieve exceptional results.</p>
+                <p className="flex-[1] font-bold text-lg md:text-xl lg:text-2xl">Empowering Teams and Individuals</p>
+                <p className="flex-[2] font-semibold text-base md:text-lg lg:text-xl">Drive efficient project management and seamless collaboration, enabling teams and individuals to focus on what truly matters and achieve exceptional results.</p>
               </div>
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Bridging Talent and Opportunity</p>
-                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Bridge the gap between talent and opportunity by curating professional talent pools tailored to meet unique needs and exceed expectations.</p>
+                <p className="flex-[1] font-bold text-lg md:text-xl lg:text-2xl">Bridging Talent and Opportunity</p>
+                <p className="flex-[2] font-semibold text-base md:text-lg lg:text-xl">Bridge the gap between talent and opportunity by curating professional talent pools tailored to meet unique needs and exceed expectations.</p>
               </div>
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Scaling Success with Flexibility</p>
-                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Deliver adaptable solutions that evolve with you—scaling effortlessly from small tasks to complex workflows, empowering teams of any size to succeed.</p>
+                <p className="flex-[1] font-bold text-lg md:text-xl lg:text-2xl">Scaling Success with Flexibility</p>
+                <p className="flex-[2] font-semibold text-base md:text-lg lg:text-xl">Deliver adaptable solutions that evolve with you—scaling effortlessly from small tasks to complex workflows, empowering teams of any size to succeed.</p>
               </div>
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Increase productivity efficiently</p>
-                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Equipped with advanced features to streamline workflows, optimizing resource with seasoned experts, and tailored solutions, businesses drive efficiency and boost productivity.</p>
+                <p className="flex-[1] font-bold text-lg md:text-xl lg:text-2xl">Increase productivity efficiently</p>
+                <p className="flex-[2] font-semibold text-base md:text-lg lg:text-xl">Equipped with advanced features to streamline workflows, optimizing resource with seasoned experts, and tailored solutions, businesses drive efficiency and boost productivity.</p>
               </div>
             </div>
           </div>
+  
         </section>
 
         {/* Flowerwork Section */}
-        <section className="flex flex-col md:flex-row items-center justify-center gap-10 mx-52 mt-10 mb-28">
-          <div className="flex-[3]">
-            <h1 className="font-bold text-xl sm:text-xl md:text-[30px] lg:text-[48px]">
+        <section className="flex flex-col lg:flex-row items-center justify-center gap-6 mx-8 py-6">
+          <div className="flex-1">
+            <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl leading-relaxed">
               Upcoming Features on <span className="text-purplev1 font-bold">FlowerWork</span>
             </h1>
-            <hr className="sm:border-t-4 md:border-t-6 lg:border-t-8 mt-8 mb-14"></hr>
-            <div className="space-y-8">
+            <hr className="border-t-4 md:border-t-6 mt-4 mb-6"></hr>
+            <div className="flex flex-col space-y-6">
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">AI-Driven Task Management</p>
-                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Elevate your entire project management with our AI tools, automating task creation, priority setting, precise forecasting, real time updates, etc.</p>
+                <p className="flex-[1] font-bold text-lg md:text-xl lg:text-2xl">AI-Driven Task Management</p>
+                <p className="flex-[2] font-semibold text-base md:text-lg lg:text-xl">Elevate your entire project management with our AI tools, automating task creation, priority setting, precise forecasting, real time updates, etc.</p>
               </div>
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Blockchain-Powered Talent Verification</p>
-                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Build trust and transparency with blockchain-secured profiles and verified credentials for talent connections you can rely on.</p>
+                <p className="flex-[1] font-bold text-lg md:text-xl lg:text-2xl">Blockchain-Powered Talent Verification</p>
+                <p className="flex-[2] font-semibold text-base md:text-lg lg:text-xl">Build trust and transparency with blockchain-secured profiles and verified credentials for talent connections you can rely on.</p>
               </div>
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Automated Talent Matching</p>
-                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Let AI intelligently match your projects with the best-fit professionals based on skills, availability, and performance history, while automating your interview process.</p>
+                <p className="flex-[1] font-bold text-lg md:text-xl lg:text-2xl">Automated Talent Matching</p>
+                <p className="flex-[2] font-semibold text-base md:text-lg lg:text-xl">Let AI intelligently match your projects with the best-fit professionals based on skills, availability, and performance history, while automating your interview process.</p>
               </div>
               <div className="flex flex-row pb-2 gap-4">
-                <p className="flex-[1] font-bold text-base md:text-[16px] lg:text-[24px]">Smart Contract Onboarding</p>
-                <p className="flex-[2] font-semibold text-sm md:text-[12px] lg:text-[20px]">Simplify onboarding and collaboration with blockchain-powered smart contracts for secure and efficient agreements.</p>
+                <p className="flex-[1] font-bold text-lg md:text-xl lg:text-2xl">Smart Contract Onboarding</p>
+                <p className="flex-[2] font-semibold text-base md:text-lg lg:text-xl">Simplify onboarding and collaboration with blockchain-powered smart contracts for secure and efficient agreements.</p>
               </div>
             </div>
           </div>
           {/* Background Image */}
-          <div className="flex-[1.5] w-[434px] h-[434px] overflow-hidden">             
+          <div className="mx-auto">             
             <Image
               src={flowerwork}
               alt="sample-image"
-              className="w-full h-full object-cover"
+              className="w-[434px] h-[434px] object-cover"
             />
           </div>
         </section>        
