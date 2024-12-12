@@ -31,6 +31,7 @@ import TaskManagementSidebar from "../components/layout/TaskManagementSidebar";
 import ListActionsCard from "../components/ui/ListActionsCard";
 import AddAssignees from "../components/ui/AddAssignees";
 import AddDescription from "../components/ui/AddDescription";
+import AddSubtasks from "../components/ui/AddSubtasks";
 
 // Icon imports
 import lock from "../public/lock-icon.svg";
@@ -186,7 +187,7 @@ export default function TaskManagementDashboard() {
           />
 
           {/* Right side container  */}
-          <div className="w-full h-full mx-11 sm:mx-4 ">
+          <div className="w-full h-full ml-11 mr-2 sm:mx-4 ">
             <div className="flex flex-col rounded-[20px] w-full px-4 bg-gray-100 mt-2 shadow-lg shadow-neutral-400 ">
               {/* Project header section */}
               <div className="py-2 flex justify-between flex-wrap">
@@ -344,7 +345,11 @@ export default function TaskManagementDashboard() {
 
               <div className="flex justify-center">
                 {/* <AddAssignees /> */}
-                <AddDescription />
+                {/* <AddDescription /> */}
+                <AddSubtasks
+                  subtaskTitle="My first subtask"
+                  listName="in progress"
+                />
               </div>
             </div>
           </div>
