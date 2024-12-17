@@ -308,7 +308,7 @@ export default function TaskManagementDashboard() {
               </div>
 
               {/* Task containers section */}
-              {/* <div className="flex py-5 gap-4 flex-wrap">
+              <div className="flex py-5 gap-4 flex-wrap">
                 {containerNames.map((containerName) => (
                   <div key={containerName} id={containerName}>
                     {isListActionsCardVisible &&
@@ -341,15 +341,15 @@ export default function TaskManagementDashboard() {
                     />
                   </div>
                 ))}
-              </div> */}
+              </div>
 
               <div className="flex justify-center">
                 {/* <AddAssignees /> */}
                 {/* <AddDescription /> */}
-                <AddSubtasks
+                {/* <AddSubtasks
                   subtaskTitle="My first subtask"
                   listName="in progress"
-                />
+                /> */}
               </div>
             </div>
           </div>
