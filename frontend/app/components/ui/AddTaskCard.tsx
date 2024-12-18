@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import AddAssignees from "./AddAssignees";
+import AddDescription from "./AddDescription";
 
 // Icon imports
 import assigneesIcon from "@/app/public/assigneesIcon.svg";
@@ -9,7 +11,8 @@ import deadlineIcon from "@/app/public/deadlineIcon.svg";
 import priorityIcon from "@/app/public/priorityIcon.svg";
 import bellIcon from "@/app/public/bell-icon.svg";
 import editIcon from "@/app/public/editIcon.svg";
-import attachFileIcon from "@/app/public/paperIcon.svg";
+import attachFileIcon from "@/app/public/attachementsIcon.svg";
+import descriptionIcon from "@/app/public/paperIcon.svg";
 import watchersIcon from "@/app/public/watchIcon.svg";
 import labelIcon from "@/app/public/labelIcon.svg";
 import subtasksIcon from "@/app/public/subtasksIcon.svg";
@@ -25,9 +28,11 @@ interface AddTaskCardProps {
 }
 
 export default function AddTaskCard({ listName }: AddTaskCardProps) {
-  const [isEditing, setIsEditing] = useState(false);
-  const [title, setTitle] = useState("My first task");
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [title, setTitle] = useState<string>("My first task");
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
+  const [showAssignees, setShowAssignees] = useState<boolean>(false);
+  const [showDescription, setShowDescription] = useState<boolean>(false);
 
   // Handle title change
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,6 +52,16 @@ export default function AddTaskCard({ listName }: AddTaskCardProps) {
   // Toggle collapse
   const toggleCollapse = () => {
     setIsCollapsed((prev) => !prev);
+  };
+
+  // Toggle AddAssignees visibility
+  const toggleAssignees = () => {
+    setShowAssignees((prev) => !prev);
+  };
+
+  // Toggle desciption visibility
+  const toggleDescription = () => {
+    setShowDescription((prev) => !prev);
   };
 
   return (
@@ -117,7 +132,10 @@ export default function AddTaskCard({ listName }: AddTaskCardProps) {
 
       {/* Add task buttons */}
       <div className="flex flex-col text-[#827E79] text-sm font-semibold gap-1 transition-all duration-300">
-        <button className="flex items-center hover:bg-[#dddcdb] hover:rounded-lg py-1 px-2 max-w-[200px]">
+        <button
+          onClick={toggleAssignees}
+          className="flex items-center hover:bg-[#dddcdb] hover:rounded-lg py-1 px-2 max-w-[200px]"
+        >
           <Image
             src={assigneesIcon}
             alt="assignees icon"
@@ -153,10 +171,24 @@ export default function AddTaskCard({ listName }: AddTaskCardProps) {
               <span className="ml-2">Select a priority</span>
             </button>
 
+            <button
+              onClick={toggleDescription}
+              className="flex items-center hover:bg-[#dddcdb] hover:rounded-lg py-1 px-2 max-w-[200px]"
+            >
+              <Image
+                src={descriptionIcon}
+                alt="attach file icon"
+                width={20}
+                height={20}
+                className="w-auto h-auto"
+              />
+              <span className="ml-2">Add a description</span>
+            </button>
+
             <button className="flex items-center hover:bg-[#dddcdb] hover:rounded-lg py-1 px-2 max-w-[200px]">
               <Image
                 src={attachFileIcon}
-                alt="attach file icon"
+                alt="description icon"
                 width={20}
                 height={20}
                 className="w-auto h-auto"
@@ -219,6 +251,24 @@ export default function AddTaskCard({ listName }: AddTaskCardProps) {
             {isCollapsed ? "Show more" : "Show less"}
           </button>
         </div>
+      </div>
+
+      <div className="relative">
+        {/* Show AddAssignees component when toggled */}
+        {showAssignees && (
+          <div className="absolute -bottom-[100px] left-0 z-10">
+            <AddAssignees toggleAssignees={toggleAssignees} />
+          </div>
+        )}
+      </div>
+
+      <div className="relative">
+        {/* Show AddAssignees component when toggled */}
+        {showDescription && (
+          <div className="absolute bottom-[100px] -right-[500px] z-30  w-[1120px]">
+            <AddDescription toggleDescription={toggleDescription} />
+          </div>
+        )}
       </div>
     </div>
   );

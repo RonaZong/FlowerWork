@@ -36,7 +36,7 @@ import icon3 from "@/app/public/description-icons/3.svg";
 import icon2 from "@/app/public/description-icons/2.svg";
 import icon1 from "@/app/public/description-icons/1.svg";
 
-export default function AddDescription() {
+export default function AddDescription({ toggleDescription }: any) {
   const [description, setDescription] = useState("");
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -60,6 +60,7 @@ export default function AddDescription() {
         padding: 3,
         borderRadius: 6,
         bgcolor: "white",
+        zIndex: 100,
       }}
     >
       {/* Header */}
@@ -82,7 +83,7 @@ export default function AddDescription() {
           Add a description
         </Typography>
         <IconButton>
-          <CloseIcon />
+          <CloseIcon onClick={toggleDescription} />
         </IconButton>
       </Box>
 

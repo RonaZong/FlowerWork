@@ -103,7 +103,7 @@ const TaskCard: React.FC<TaskCardProps> = ({
   return (
     <div
       ref={ref}
-      className={`cursor-pointer flex flex-col bg-gray-50 sm:w-[330px] sm:h-[205px]
+      className={`cursor-pointer flex flex-col bg-gray-50 sm:w-[330px] sm:h-[205px] z-0
          rounded-[20px] py-2 gap-3 shadow-left-heavy px-4 mb-3 hover:border-[#BD71D4] hover:border-2 ${
            isDragging ? "opacity-50" : ""
          }`}

@@ -43,7 +43,7 @@ export default function InviteNewTeamMembers({
   };
 
   return (
-    <div className="bg-white min-h-[201px] md:w-[768px]  p-5 rounded-[22px] shadow-lg">
+    <div className="bg-white min-h-[201px] md:w-[768px]  p-5 rounded-[22px] shadow-lg z-50">
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-lg font-bold">Invite new team members</h1>

@@ -38,7 +38,11 @@ const recentlyUsed = [
   },
 ];
 
-export default function AddAssignees() {
+export default function AddAssignees({
+  toggleAssignees,
+}: {
+  toggleAssignees: () => void;
+}) {
   const [selectedAssignee, setSelectedAssignee] = useState<{
     id: number;
     name: string;
@@ -65,7 +69,12 @@ export default function AddAssignees() {
     >
       <div className="flex justify-center items-center ">
         <h1 className="mx-auto text-2xl font-bold">Add assignees</h1>
-        <Image src={xIcon} alt="x icon" className="cursor-pointer" />
+        <Image
+          src={xIcon}
+          alt="x icon"
+          className="cursor-pointer"
+          onClick={toggleAssignees}
+        />
       </div>
 
       {/* Search bar */}
