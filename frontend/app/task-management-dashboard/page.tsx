@@ -342,15 +342,6 @@ export default function TaskManagementDashboard() {
                   </div>
                 ))}
               </div>
-
-              <div className="flex justify-center">
-                {/* <AddAssignees /> */}
-                {/* <AddDescription /> */}
-                {/* <AddSubtasks
-                  subtaskTitle="My first subtask"
-                  listName="in progress"
-                /> */}
-              </div>
             </div>
           </div>
         </div>
