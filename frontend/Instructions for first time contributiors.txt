@@ -1,5 +1,5 @@
 1. There are two ways to clone the repository:
-Option 1: Clone the repository from FlowerWorker/hello if you have the write access to the repository
+Option 1: Clone the repository from FlowerWorker/hello
 git clone <repo-url>
 
 Option 2: Fork the repository to make a copy of your own, and select "Copy the main branch only" (Recommended)
