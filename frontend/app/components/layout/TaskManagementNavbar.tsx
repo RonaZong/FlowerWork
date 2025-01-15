@@ -1,13 +1,23 @@
 "use client";
 
+import React, { useState } from "react";
 import Image from "next/image";
 import logoIcon from "@/app/public/LOGO.svg";
 import userIconPlaceholder from "@/app/public/userIconPlaceholder.svg";
 import activeIcon from "@/app/public/activeIcon.svg";
 import activeNotificationIcon from "@/app/public/activeNotification.svg";
 import userIcon from "@/app/public/user-icons/userIcon3.svg";
+import Link from "next/link";
+import TaskManagementProfilePage from "../popup/TaskManagementProfilePage";
+
 
 const TaskManagementNavbar = () => {
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+
+  const toggleProfile = () => {
+    setIsProfileOpen((prev) => !prev);
+  };
+
   return (
     <div className="w-full">
       <div
@@ -32,17 +42,30 @@ const TaskManagementNavbar = () => {
 
           <Image src={activeIcon} alt="active icon" />
 
-          <Image
-            src={userIcon}
-            alt="user icon"
-            className="w-10 h-10 sm:h-auto sm:w-auto"
-          />
+          <button
+            onClick={toggleProfile}
+            className="focus:outline-none"
+          >
+            <Image
+              src={userIcon}
+              alt="user icon"
+              className="w-10 h-10 sm:h-auto sm:w-auto"
+            />
+          </button>
         </div>
       </div>
 
       <div className="flex w-full min-h-[49px] px-4 items-center bg-[#282624]">
         <p className="font-bold text-lg py-2 text-white">Workspaces</p>
       </div>
+
+      {isProfileOpen && (
+        <div
+          className="absolute right-2 top-[85px] bg-white shadow-lg rounded-lg z-50"
+        >
+          <TaskManagementProfilePage />
+        </div>
+      )}
     </div>
   );
 };
