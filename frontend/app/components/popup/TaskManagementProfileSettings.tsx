@@ -157,6 +157,7 @@ const TaskManagementProfileSettings: React.FC<ProfileSettingsProps> = ({ closeSe
                 )}
     
                 {activeTab === "notifications" && (
+                <div className="flex flex-col">
                     <div className="relative flex flex-row items-start p-8">
                         <div>
                             <button
@@ -186,92 +187,102 @@ const TaskManagementProfileSettings: React.FC<ProfileSettingsProps> = ({ closeSe
                         </div>
 
                         <div className="grid grid-cols-1 gap-4">
-                        <div>
-                            <h3 className="font-semibold text-sm">Notify me about</h3>
-                            <div className="mt-2">
-                            <label className="flex items-center space-x-2">
-                                <input type="checkbox" className="w-4 h-4" />
-                                <span>All new messages</span>
-                            </label>
-                            <label className="flex items-center space-x-2 mt-2">
-                                <input type="checkbox" className="w-4 h-4" />
-                                <span>Direct messages and mentions</span>
-                            </label>
-                            <label className="flex items-center space-x-2 mt-2">
-                                <input type="checkbox" className="w-4 h-4" />
-                                <span>Notify me about replies to threads I'm following</span>
-                            </label>
+                            <div>
+                                <h3 className="font-semibold text-sm">Notify me about</h3>
+                                <div className="mt-2">
+                                    <label className="flex items-center space-x-2">
+                                        <input type="checkbox" className="w-4 h-4" />
+                                        <span>All new messages</span>
+                                    </label>
+                                    <label className="flex items-center space-x-2 mt-2">
+                                        <input type="checkbox" className="w-4 h-4" />
+                                        <span>Direct messages and mentions</span>
+                                    </label>
+                                    <label className="flex items-center space-x-2 mt-2">
+                                        <input type="checkbox" className="w-4 h-4" />
+                                        <span>Notify me about replies to threads I'm following</span>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
             
-                        <div>
-                            <h3 className="font-semibold text-sm">Notification schedule</h3>
-                            <p className="text-xs text-gray-500">
-                            You'll only receive notifications in the hours you choose. Outside of those
-                            times, notifications will be paused.
-                            </p>
-                            <div className="mt-2">
-                            <label className="block text-sm">Allow notifications:</label>
-                            <select className="border rounded-md p-2 w-full mt-1">
+                            <div>
+                                <h3 className="font-semibold text-sm">Notification schedule</h3>
+                                <p className="text-xs text-gray-500">
+                                You'll only receive notifications in the hours you choose. Outside of those
+                                times, notifications will be paused.
+                                </p>
+                                <div className="mt-2">
+                                    <label className="block text-sm">Allow notifications:</label>
+                                    <select className="border rounded-md p-2 w-full mt-1">
+                                        <option>Every day</option>
+                                        <option>Weekdays only</option>
+                                        <option>Custom schedule</option>
+                                    </select>
+                                    <div className="flex gap-2 mt-2">
+                                        <select className="border rounded-md p-2 flex-1">
+                                            {Array.from({ length: 12 }, (_, i) => i + 8).map((hour) => (
+                                            <option key={hour} value={`${hour}:00 AM`}>
+                                                {hour}:00 AM
+                                            </option>
+                                            ))}
+                                        </select>
+                                        <select className="border rounded-md p-2 flex-1">
+                                            {Array.from({ length: 12 }, (_, i) => i + 5).map((hour) => (
+                                            <option key={hour} value={`${hour}:00 PM`}>
+                                                {hour}:00 PM
+                                            </option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div>
+                                <h3 className="font-semibold text-sm">Set a default time for remind notifications</h3>
+                                <select className="border rounded-md p-2 w-full mt-1">
+                                {Array.from({ length: 12 }, (_, i) => i + 5).map((hour) => (
+                                <option key={hour} value={`${hour}:00 PM`}>
+                                    {hour}:00 PM
+                                </option>
+                                ))}
+                                </select>
+                            </div>
+                
+                            <div>
+                                <h3 className="font-semibold text-sm">When I'm not active on desktop</h3>
+                                <label className="block text-sm mt-2">Send notifications to my mobile devices:</label>
+                                <select className="border rounded-md p-2 w-full mt-1">
                                 <option>Every day</option>
                                 <option>Weekdays only</option>
-                                <option>Custom schedule</option>
-                            </select>
-                            <div className="flex gap-2 mt-2">
-                                <select className="border rounded-md p-2 flex-1">
-                                <option>8:00 AM</option>
-                                <option>9:00 AM</option>
-                                </select>
-                                <select className="border rounded-md p-2 flex-1">
-                                <option>5:00 PM</option>
-                                <option>6:00 PM</option>
                                 </select>
                             </div>
+                
+                            <div>
+                                <label className="flex items-center space-x-2">
+                                <input type="checkbox" className="w-4 h-4" />
+                                <span>Mute all message sounds from FlowerWorker</span>
+                                </label>
                             </div>
-                        </div>
-            
-                        <div>
-                            <h3 className="font-semibold text-sm">Set a default time for remind notifications</h3>
-                            <select className="border rounded-md p-2 w-full mt-1">
-                            <option>8:00 AM</option>
-                            <option>9:00 AM</option>
-                            </select>
-                        </div>
-            
-                        <div>
-                            <h3 className="font-semibold text-sm">When I'm not active on desktop</h3>
-                            <label className="block text-sm mt-2">Send notifications to my mobile devices:</label>
-                            <select className="border rounded-md p-2 w-full mt-1">
-                            <option>Every day</option>
-                            <option>Weekdays only</option>
-                            </select>
-                        </div>
-            
-                        <div>
-                            <label className="flex items-center space-x-2">
-                            <input type="checkbox" className="w-4 h-4" />
-                            <span>Mute all message sounds from FlowerWorker</span>
-                            </label>
-                        </div>
-                        </div>
-
-                        {/* Buttons */}
-                        <div className="flex justify-end mt-6 gap-4">
-                            <button
-                                onClick={closeSettings}
-                                type="button"
-                                className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
-                            >
-                                Cancel
-                            </button>
-                            <button
-                                type="submit"
-                                className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600"
-                            >
-                                Save
-                            </button>
                         </div>
                     </div>
+                    {/* Buttons */}
+                    <div className="w-full flex justify-end mt-6 gap-4">
+                        <button
+                            onClick={closeSettings}
+                            type="button"
+                            className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            onClick={closeSettings}
+                            type="submit"
+                            className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600"
+                        >
+                            Save
+                        </button>
+                    </div>
+                </div>
                 )}
     
                 {activeTab === "time-zone" && (
