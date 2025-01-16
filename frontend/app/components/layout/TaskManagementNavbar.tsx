@@ -7,7 +7,6 @@ import userIconPlaceholder from "@/app/public/userIconPlaceholder.svg";
 import activeIcon from "@/app/public/activeIcon.svg";
 import activeNotificationIcon from "@/app/public/activeNotification.svg";
 import userIcon from "@/app/public/user-icons/userIcon3.svg";
-import Link from "next/link";
 import TaskManagementProfilePage from "../popup/TaskManagementProfilePage";
 
 
