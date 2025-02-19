@@ -5,33 +5,7 @@ import ProfileHeader from "@/app/components/popup/TaskManagementProfile/componen
 import { StatusSection } from "@/app/components/popup/TaskManagementProfile/components/StatusSection";
 import { ContactSection } from "@/app/components/popup/TaskManagementProfile/components/ContactSection";
 import { SettingsSection } from "@/app/components/popup/TaskManagementProfile/components/SettingSection";
-
-interface StatusOption {
-    value?: string;
-    label: string;
-    icon: string | null;
-}
-
-interface UserSettings {
-    profile: {
-        fullName: string;
-        jobTitle: string;
-        email: string;
-        department: string;
-        phoneNumber: string;
-    };
-    profilePhoto: string;
-    notifications: {
-        allNewMessages: boolean;
-        directMessages: boolean;
-        threadReplies: boolean;
-        schedule: string;
-        notificationHours: {
-            start: string;
-            end: string;
-        };
-    };
-}
+import { StatusOption, UserSettings } from "./hooks";
 
 const TaskManagementProfilePage = () => {
     const [status, setStatus] = useState<StatusOption>({
