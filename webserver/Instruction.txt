@@ -1,0 +1,246 @@
+Before starting, let's ensure we have a clean state:
+docker compose down && docker compose up --build
+
+Now, let's set the required environment variable for Typesense and start the services:
+TYPESENSE_API_KEY=xyz123 && docker compose up --build
+TYPESENSE_API_KEY=xyz123 docker compose up --build
+TYPESENSE_API_KEY=xyz123 TYPESENSE_URL=http://typesense:8108 docker compose up --build
+
+docker compose ps
+docker compose ps | cat
+docker ps | grep rust-webserver
+docker compose logs rust-webserver | tail -n 50
+
+docker exec postgres pg_isready
+
+curl -H "X-TYPESENSE-API-KEY: xyz123" http://localhost:8108/health
+curl http://localhost:8108/health
+
+docker compose up -d && docker compose ps
+
+localhost:5432 - This is the PostgreSQL database port. It's not meant to be accessed through a web browser. The "page not working" message is normal because it's a database connection port.
+localhost:8108 - This is the Typesense search engine API. The "Not Found" message at the root endpoint is normal. You need to use specific API endpoints to interact with it.
+localhost:8080 - This is your Rust web server, and it's now working correctly. We just confirmed this by getting a successful response from the health check endpoint.
+
+To use the API, you'll need to:
+First register a user using POST /api/v1/auth/register
+Then login using POST /api/v1/auth/login
+Use the JWT token from the login response in the Authorization header for other endpoints
+Would you like me to show you how to use any specific endpoint?
+
+
+Authentication endpoints (/api/v1/auth/):
+1. Register a New User
+Method: POST
+URL: http://localhost:8080/api/v1/auth/register
+Headers: Content-Type: application/json
+Body (JSON):
+{
+    "username": "testuser",
+    "email": "test@example.com",
+    "password": "password123"
+}
+
+2. Login
+Method: POST
+URL: http://localhost:8080/api/v1/auth/login
+Headers: Content-Type: application/json
+Body (JSON):
+{
+    "email": "test@example.com",
+    "password": "password123"
+}
+Response will include an Authorization header with a JWT token that you'll need for other endpoints
+
+3. Request Password Reset
+Method: POST
+URL: http://localhost:8080/api/v1/auth/forgot-password
+Headers: Content-Type: application/json
+Body (JSON):
+{
+    "email": "test@example.com"
+}
+
+4. Reset Password
+Method: PUT 
+URL: http://localhost:8080/api/v1/auth/reset-password
+Headers: Content-Type: application/json
+Body (JSON):
+{
+    "token": "reset_token_received_via_email",
+    "new_password": "new_password123"
+}
+
+
+Users endpoints (/api/v1/users/):
+1. Get User Info (Protected route - requires token)
+Method: GET
+URL: http://localhost:8080/api/v1/users/info
+Headers: Content-Type: application/json
+Authorization: Bearer <token> (Use the token received from login)
+
+2. Search Users
+Method: GET
+URL: http://localhost:8080/api/v1/users/search
+URL: http://localhost:8080/api/v1/users/search?q=test&page=1&per_page=10
+Headers: Content-Type: application/json
+
+
+Users Profile endpoints (/api/v1/users/profile/):
+1. Get User Profile (Protected route - requires token)
+Method: GET
+URL: http://localhost:8080/api/v1/users/profile
+Headers: Content-Type: application/json
+
+2. Update User Profile (Protected route - requires token)
+Method: PUT
+URL: http://localhost:8080/api/v1/users/profile
+Headers: Content-Type: application/json
+
+
+Users Settings endpoints (/api/v1/users/settings/):
+1. Get Users Settings (Protected route - requires token)
+Method: GET
+URL: http://localhost:8080/api/v1/users/settings
+Headers: Content-Type: application/json
+
+2. Update Users Settings (Protected route - requires token)
+Method: PUT
+URL: http://localhost:8080/api/v1/users/settings
+Headers: Content-Type: application/json
+
+
+Users Notification Settings endpoints (/api/v1/users/settings/notifications):
+1. Get Users Notification Settings (Protected route - requires token)
+Method: GET
+URL: http://localhost:8080/api/v1/users/settings/notifications
+Headers: Content-Type: application/json
+
+2. Update Users Notification Settings (Protected route - requires token)
+Method: PUT
+URL: http://localhost:8080/api/v1/users/settings/notifications
+Headers: Content-Type: application/json
+
+
+Projects endpoints (/api/v1/projects/):
+1. Create Project (Protected route - requires token)
+Method: POST
+URL: http://localhost:8080/api/v1/projects
+Headers: Content-Type: application/json
+Authorization: Bearer <token>
+Body (JSON):
+{
+    "title": "Test Project",
+    "description": "This is a test project"
+}
+
+2. Search Projects
+Method: GET 
+URL: http://localhost:8080/api/v1/projects/search
+URL: http://localhost:8080/api/v1/projects/search?q=test&page=1&per_page=10
+Headers: Content-Type: application/json
+
+
+Tasks endpoints (/api/v1/tasks/):
+1. Create Task (Protected route - requires token)
+Method: POST
+URL: http://localhost:8080/api/v1/tasks
+Headers: Content-Type: application/json
+Authorization: Bearer <token>
+Body (JSON):
+{
+    "title": "Test Task",
+    "description": "This is a test task",
+    "reward": 100,
+    "project_id": 1,
+    "due_date": "25-12-2024"
+}
+
+2. Get Tasks
+Method: GET 
+URL: http://localhost:8080/api/v1/tasks
+Headers: Content-Type: application/json
+Authorization: Bearer <token>
+
+3. Get Task by ID
+Method: GET
+URL: http://localhost:8080/api/v1/tasks/{task_id}
+Headers: Content-Type: application/json
+Authorization: Bearer <token>
+
+4. Update task
+Method: PATCH 
+URL: http://localhost:8080/api/v1/tasks/{id}
+Headers: Content-Type: application/json
+Authorization: Bearer <token>
+Body (JSON):
+{
+    "title": "Updated Task Title",
+    "description": "Updated description",
+    "reward": 150,
+    "progress": "IN_PROGRESS",
+    "priority": "HIGH",
+    "due_date": "26-12-2024",
+    "assigned_users": [1, 2],
+    "assign_access_users": [1, 2]
+}
+
+5. Delete Task
+Method: DELETE
+URL: http://localhost:8080/api/v1/tasks/{id}
+Headers: 
+Content-Type: application/json
+Authorization: Bearer <token>
+
+
+Subtasks endpoints (All Protected routes - require token)
+1. Create Subtask
+Method: POST
+URL: http://localhost:8080/api/v1/subtasks
+Headers: Content-Type: application/json
+Authorization: Bearer <token>
+Body (JSON):
+{
+    "task_id": 1,
+    "title": "Test Subtask",
+    "description": "This is a test subtask",
+    "due_date": "25-12-2024",
+    "priority": "HIGH",
+    "progress": "TODO",
+    "assigned_users": [1, 2]
+}
+
+
+Jobs endpoints
+1. Search Jobs
+Method: GET
+URL: http://localhost:8080/api/v1/jobs/search
+Headers: Content-Type: application/json
+
+
+LinkedIn Integration endpoints
+1. Start LinkedIn Authentication
+Method: GET
+URL: http://localhost:8080/api/v1/linkedin/auth
+
+2. Handle LinkedIn Callback
+Method: POST
+URL: http://localhost:8080/api/v1/linkedin/callback
+Headers: Content-Type: application/json
+Body (JSON):
+{
+    "code": "linkedin_auth_code",
+    "text": "post_text"
+}
+
+
+WebSocket Chat endpoints
+1. Connect to Chat
+WebSocket URL: ws://localhost:8080/ws/chat
+Headers: Authorization: Bearer <token>
+
+
+Health check endpoint:
+1. Check server health
+Method: GET 
+URL: http://localhost:8080/api/v1/health
