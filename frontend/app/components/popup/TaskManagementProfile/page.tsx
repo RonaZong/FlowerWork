@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProfileHeader from "@/app/components/popup/TaskManagementProfile/components/ProfileHeader";
 import { StatusSection } from "@/app/components/popup/TaskManagementProfile/components/StatusSection";
 import { ContactSection } from "@/app/components/popup/TaskManagementProfile/components/ContactSection";
@@ -36,6 +36,12 @@ const TaskManagementProfilePage = () => {
             },
         },
     });
+
+    // Fetch user profile data from API
+    useEffect(() => {
+        const fetchUserProfile = async () => {
+            
+    })
 
     const updateUserSettings = (newSettings: Partial<UserSettings>) => {
         setUserSettings((prev) => ({ ...prev, ...newSettings }));
