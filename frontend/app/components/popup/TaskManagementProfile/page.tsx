@@ -40,7 +40,7 @@ const TaskManagementProfilePage = () => {
     // Fetch user profile data from API
     useEffect(() => {
         const fetchUserProfile = async () => {
-            
+        }
     })
 
     const updateUserSettings = (newSettings: Partial<UserSettings>) => {
