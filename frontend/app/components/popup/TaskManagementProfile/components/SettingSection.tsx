@@ -29,7 +29,7 @@ export const SettingsSection: React.FC<SettingsSectionProps> = ({ isSettingsOpen
                 Settings
             </button>
             {isSettingsOpen && (
-                <ProfileSettings toggleSettings={toggleSettings} />
+                <ProfileSettings toggleSettings={toggleSettings} updateUserSettings={updateUserSettings} />
             )}
 
             {/* Logout Section */}

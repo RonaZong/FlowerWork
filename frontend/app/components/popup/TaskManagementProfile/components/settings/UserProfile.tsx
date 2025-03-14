@@ -56,9 +56,9 @@ const ProfileSettings: React.FC<ProfileSettingsProps> = ({ toggleSettings }) => 
 
                 {/* Content */}
                 <div className='w-full p-6 mt-6'>
-                    {activeTab === SETTINGS_TABS.ACCOUNT && <AccountSettings />}
-                    {activeTab === SETTINGS_TABS.NOTIFICATIONS && <Notifications />}
-                    {activeTab === SETTINGS_TABS.TIMEZONE && <TimeZone />}
+                    {activeTab === SETTINGS_TABS.ACCOUNT && <AccountSettings updateUserSettings={updateUserSettings} />}
+                    {activeTab === SETTINGS_TABS.NOTIFICATIONS && <Notifications updateUserSettings={updateUserSettings} />}
+                    {activeTab === SETTINGS_TABS.TIMEZONE && <TimeZone updateUserSettings={updateUserSettings} />}
                 </div>
             </div>
         </div>

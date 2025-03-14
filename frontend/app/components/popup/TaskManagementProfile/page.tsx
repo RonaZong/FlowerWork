@@ -40,11 +40,48 @@ const TaskManagementProfilePage = () => {
     // Fetch user profile data from API
     useEffect(() => {
         const fetchUserProfile = async () => {
-        }
+            try {
+                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/account-settings`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to fetch user profile");
+                }
+
+                const data = await response.json();
+                setUserSettings(data);
+            } catch (error) {
+                console.error("Error fetching user profile:", error);
+            }
+        };
+        fetchUserProfile();
     })
 
-    const updateUserSettings = (newSettings: Partial<UserSettings>) => {
-        setUserSettings((prev) => ({ ...prev, ...newSettings }));
+    const updateUserSettings = async (newSettings: Partial<UserSettings>) => {
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/account-settings`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`,
+                },
+                body: JSON.stringify(newSettings),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to update user profile");
+            }
+
+            const data = await response.json();
+            setUserSettings(data);
+        } catch (error) {
+            console.error("Error updating user profile:", error);
+        }
     };
 
     return (
@@ -72,6 +109,7 @@ const TaskManagementProfilePage = () => {
                 <SettingsSection
                     isSettingsOpen={isSettingsOpen}
                     toggleSettings={toggleSettings}
+                    updateUserSettings={updateUserSettings}
                 />
             </main>
         </div>
