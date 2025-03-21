@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 
 
-export const SettingsSection: React.FC<SettingsSectionProps> = ({ isSettingsOpen, toggleSettings }) => {
+export const SettingsSection: React.FC<SettingsSectionProps> = ({ isSettingsOpen, toggleSettings, updateUserSettings }) => {
     const { logout } = useAuth();
 
     const router = useRouter();

@@ -10,7 +10,16 @@ use crate::models::user_account_settings::UserAccountSettingsRequest;
 use crate::run_async_query;
 use crate::services::{user_account_settings_service, user_service::get_user_id_by_email};
 
-#[get("/account-settings")]
+pub fn account_routes(cfg: &mut web::ServiceConfig) {
+    cfg.service(
+        web::scope("/account-settings")
+            .wrap(auth_middleware::Auth)
+            .service(get_account_settings)
+            .service(update_profile),
+    );
+}
+
+#[get("")]
 async fn get_account_settings(
     pool: web::Data<DbPool>,
     user_sub: UserSub,
@@ -23,7 +32,7 @@ async fn get_account_settings(
     Ok::<HttpResponse, ApiError>(HttpResponse::Ok().json(profile))
 }
 
-#[put("/account-settings")]
+#[put("")]
 async fn update_profile(
     pool: web::Data<DbPool>,
     user_sub: UserSub,
