@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import AddAssignees from "./AddAssignees";
 import AddDescription from "./AddDescription";
+import AddPriority from "./AddPriority";	
 
 // Icon imports
 import assigneesIcon from "@/app/public/assigneesIcon.svg";
@@ -33,6 +34,7 @@ export default function AddTaskCard({ listName }: AddTaskCardProps) {
     const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
     const [showAssignees, setShowAssignees] = useState<boolean>(false);
     const [showDescription, setShowDescription] = useState<boolean>(false);
+    const [showPriority, setShowPriority] = useState<boolean>(false);
 
     // Handle title change
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,6 +64,11 @@ export default function AddTaskCard({ listName }: AddTaskCardProps) {
     // Toggle desciption visibility
     const toggleDescription = () => {
         setShowDescription((prev) => !prev);
+    };
+
+    // Toggle priority visibility
+    const togglePriority = () => {
+        setShowPriority((prev) => !prev);
     };
 
     return (
@@ -160,7 +167,10 @@ export default function AddTaskCard({ listName }: AddTaskCardProps) {
                 {/* Collapsible buttons */}
                 {!isCollapsed && (
                     <>
-                        <button className="flex items-center hover:bg-[#dddcdb] hover:rounded-lg py-1 px-2 max-w-[200px]">
+                        <button 
+                            onClick={togglePriority}
+                            className="flex items-center hover:bg-[#dddcdb] hover:rounded-lg py-1 px-2 max-w-[200px]"
+                        >
                             <Image
                                 src={priorityIcon}
                                 alt="priority icon"
@@ -263,10 +273,19 @@ export default function AddTaskCard({ listName }: AddTaskCardProps) {
             </div>
 
             <div className="relative">
-                {/* Show AddAssignees component when toggled */}
+                {/* Show AddDescription component when toggled */}
                 {showDescription && (
                     <div className="absolute bottom-[100px] -right-[500px] z-30  w-[1120px]">
                         <AddDescription toggleDescription={toggleDescription} />
+                    </div>
+                )}
+            </div>
+
+            <div className="relative">
+                {/* Show AddPriority component when toggled */}
+                {showPriority && (
+                    <div className="absolute -bottom-[100px] left-0 z-10">
+                        <AddPriority togglePriority={togglePriority} />
                     </div>
                 )}
             </div>
