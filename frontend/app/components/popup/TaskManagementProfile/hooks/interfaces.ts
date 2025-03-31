@@ -22,6 +22,7 @@ export interface StatusDropdownProps {
 export interface SettingsSectionProps {
     isSettingsOpen: boolean;
     toggleSettings: () => void;
+    updateUserSettings: (settings: UserSettings) => void;
 }
 
 export interface ProfileSettingsProps {
