@@ -47,7 +47,7 @@ git checkout -b <branch-name>
 or you can use the checkout button on VS code and select "Create a new branch from ..."
 
 
-6. Merge or Rebase updates
+6. Merge or Rebase updates (Always do this before and after your work to keep your work sync with our "develop" branch)
 After fetching, you can update your local branches with the upstream changes.
 
 Merge upstream changes into your branch:
@@ -71,4 +71,4 @@ or with the github desktop.
 
 
 8. Create a Pull Request (PR)
-Once your branch is pushed, you can create a PR to merge your branch into the target branch (develop).
+Once your branch is pushed, and you have finished your task, you can create a PR to merge your branch into the target branch (develop).
