@@ -77,7 +77,6 @@ export default function AddTaskCard({ listName }: AddTaskCardProps) {
 
     const handleSaveDeadline = (date: Date | null, time: string | null) => {
         setDeadline({ date, time });
-        setShowDeadline(false);
     };
 
     const formatDeadline = (date: Date | null, time: string | null) => {
@@ -220,7 +219,6 @@ export default function AddTaskCard({ listName }: AddTaskCardProps) {
                         </button>
 
                         <button
-                            onClick={toggleAttachments}
                             className="flex items-center hover:bg-[#dddcdb] hover:rounded-lg py-1 px-2 max-w-[200px]"
                         >
                             <Image

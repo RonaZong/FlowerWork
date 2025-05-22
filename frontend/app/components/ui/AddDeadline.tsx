@@ -57,16 +57,14 @@ const DatePicker = (props: PickersDayProps<Date>) => {
 }
 
 const TimePicker = styled(Button)({
-    minWidth: '80px',
     fontSize: '16px',
-    minWidth: '80px',
     fontWeight: 'bold',
     border: 'transparent',
     '&.selected': {
         color: 'white',
         backgroundColor: '#BD71D4',
         border: '1px solid #BD71D4',
-        borderRadius: 4,
+        borderRadius: 2,
     },
 });
 
@@ -200,7 +198,6 @@ export default function AddDeadline({ onSave, toggleDeadline }: AddDeadlineProps
                                 day: DatePicker // Use your custom DatePicker component
                             }}
                             sx={{
-                                width: '100%',
                                 '& .MuiPickersCalendarHeader-root': {
                                     '& .MuiPickersCalendarHeader-label': {
                                         fontSize: '1.25rem', // Larger month/year text
@@ -224,7 +221,6 @@ export default function AddDeadline({ onSave, toggleDeadline }: AddDeadlineProps
                                 },
                                 '& .MuiDayCalendar-monthContainer': {
                                     height: '100%',
-                                    minHeight: 280, // Minimum height for days grid
                                 },
                             }}
                         />
@@ -242,7 +238,7 @@ export default function AddDeadline({ onSave, toggleDeadline }: AddDeadlineProps
 
                     <Divider sx={{ mb: 1 }} />
 
-                    <Stack spacing={1}>
+                    <Stack spacing={0.75}>
                         {timeSlots.map((time) => (
                             <TimePicker
                                 key={time}
@@ -321,7 +317,7 @@ export default function AddDeadline({ onSave, toggleDeadline }: AddDeadlineProps
                                 onClick={handleSave}
                                 disabled={!selectedDate || !selectedTime}
                                 sx={{
-                                    backgroundColor: '#3FDCD0',
+                                    backgroundColor: '#BD71D4',
                                     '&:hover': { backgroundColor: '#36C1B5' },
                                     color: 'white',
                                     textTransform: 'none'
